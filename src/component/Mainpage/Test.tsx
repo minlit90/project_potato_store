@@ -1,24 +1,29 @@
 "use client";
 
 interface TestProps {
-  num: number;
+  num?: number;
   text: string;
   className?: string;
-  chidren?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-export default function Test({ num, text, className, chidren }: TestProps) {
+export default function Test({
+  num = 10,
+  text,
+  className,
+  children,
+}: TestProps) {
   return (
     <div>
       <div className="flex gap-3">
-        <div>
-          name: <span className={className}>{text}</span>
+        <div>{children}</div>
+        <div className={className}>
+          name: <span>{text}</span>
         </div>
-        <h2>
-          age: <span className={className}>{num}</span>
+        <h2 className={className}>
+          amount: <span>{num}</span>
         </h2>
       </div>
-      <div>{chidren}</div>
     </div>
   );
 }

@@ -68,7 +68,7 @@ export default function header() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="cursor-pointer">
+                  <Link href="/Fragnance" className="cursor-pointer">
                     Fragnance
                   </Link>
                 </li>
