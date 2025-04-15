@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BaseModal from "./BaseModal";
+import Basemodal from "./Basemodal";
 
 interface MultiModalProps {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ export default function MultiModal({ children }: MultiModalProps) {
 
   return (
     <>
-      <BaseModal visible={isModalVisible}>
+      <Basemodal visible={isModalVisible}>
         <div className="bg-white w-44 h-44 rounded-2xl overflow-hidden relative flex items-center justify-center">
           {children}
           <button
@@ -20,7 +20,7 @@ export default function MultiModal({ children }: MultiModalProps) {
             팔기
           </button>
         </div>
-      </BaseModal>
+      </Basemodal>
     </>
   );
 }

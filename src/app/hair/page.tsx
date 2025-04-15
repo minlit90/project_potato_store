@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import BaseModal from "@/component/Modal/BaseModal";
-import MainModal from "@/component/Modal/MainModal";
+import BaseModal from "@/component/Modal/Basemodal";
+import MainModal from "@/component/Modal/Mainmodal";
 
 export default function Page() {
   // 멀티모달
