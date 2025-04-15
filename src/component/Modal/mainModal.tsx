@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-export default function MainModal({ onClose, description }: mainModalProp) {
+export default function Mainmodal({ onClose, description }: mainModalProp) {
   const [isVisible, setIsVisble] = useState(true);
   const colseModal = () => {
     setIsVisble(false);
