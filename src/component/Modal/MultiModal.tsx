@@ -5,9 +5,9 @@ interface MultiModalProps {
   children: React.ReactNode;
 }
 
-const [isModalVisible, setIsModalVisible] = useState(false);
-
 export default function MultiModal({ children }: MultiModalProps) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   return (
     <>
       <BaseModal visible={isModalVisible}>

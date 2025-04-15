@@ -6,7 +6,7 @@ import { useState } from "react";
 import BaseModal from "@/component/Modal/BaseModal";
 import MainModal from "@/component/Modal/MainModal";
 
-export default function Counter() {
+export default function Page() {
   const [count, setCount] = useAtom(countAtom);
   const [modalVisible, setModalVisible] = useState<boolean[]>([true, true]);
   // const [modalVisible, setModalVisible] = useState(true);

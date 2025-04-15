@@ -3,7 +3,7 @@ import { useState } from "react";
 import BaseModal from "@/component/Modal/BaseModal";
 import MainModal from "@/component/Modal/MainModal";
 
-export default function page() {
+export default function Page() {
   // 멀티모달
   const vegetableList = [
     { id: "potato", name: "감자" },

@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Test from "./Test";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const tab = [
   {
@@ -36,7 +36,7 @@ export default function Mainpage() {
       <section className="mb-[20px]">
         <h2 className="font-semibold mb-2.5">1. type, component, props, map</h2>
         <div className={`p-[14px] rounded-sm ${istest ? "bg-black" : ""}`}>
-          {tab.map((tabs, index) => (
+          {tab.map((tabs) => (
             <Test
               num={tabs.amount}
               text={tabs.name}

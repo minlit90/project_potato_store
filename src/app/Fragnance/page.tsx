@@ -1,4 +1,4 @@
-export default function page() {
+export default function Page() {
   return (
     <div>
       <div className="flex flex-col gap-2 p-8 justify-center items-start">
