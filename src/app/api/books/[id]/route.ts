@@ -4,33 +4,34 @@ import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 export const DELETE = async (
-  request: Request,
-  context: { params: { id: string } }
+  _req: Request,
+  { params: { id } }: { params: { id: string } }
 ) => {
-  const { params } = context;
+  const bookId = Number(id);
 
-  const id = Number(params.id);
-
-  if (isNaN(id)) {
-    return NextResponse.json({ error: "유효하지 않은 ID" }, { status: 400 });
+  if (!Number.isInteger(bookId)) {
+    return NextResponse.json(
+      { error: "유효하지 않은 ID입니다." },
+      { status: 400 }
+    );
   }
 
   try {
-    await prisma.book.delete({
-      where: { id },
-    });
-
+    await prisma.book.delete({ where: { id: bookId } });
     return new NextResponse(null, { status: 204 });
   } catch (error: any) {
-    console.error("삭제 오류:", error);
+    console.error("삭제 실패:", error);
 
-    if (error.code === "P2025") {
+    if (error?.code === "P2025") {
       return NextResponse.json(
-        { error: "책을 찾을 수 없습니다." },
+        { error: "책이 존재하지 않습니다." },
         { status: 404 }
       );
     }
 
-    return NextResponse.json({ error: "삭제 실패" }, { status: 500 });
+    return NextResponse.json(
+      { error: "서버 오류로 삭제에 실패했습니다." },
+      { status: 500 }
+    );
   }
 };

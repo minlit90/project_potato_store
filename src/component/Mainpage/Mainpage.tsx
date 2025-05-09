@@ -5,6 +5,7 @@ import Dbtest from "./Dbtest";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Like from "../Like/Like";
+import Booklist from "../Booklist/Booklist";
 
 const tab = [
   {
@@ -26,45 +27,11 @@ const tab = [
   },
 ];
 
-type Book = {
-  id: number;
-  title: string;
-};
-
 export default function Mainpage() {
-  const [books, setBooks] = useState<Book[]>([]);
-
-  const fetchBooks = async () => {
-    const res = await fetch("/api/books");
-    const data = await res.json();
-    setBooks(data);
-  };
-
-  useEffect(() => {
-    fetchBooks();
-  }, []);
-
   const [istest, setIstest] = useState(false);
 
   const bgChange = () => {
     setIstest((prev) => !prev);
-  };
-
-  //삭제
-  const handleDelete = async (id: number) => {
-    try {
-      const res = await fetch(`/api/books/${id}`, {
-        method: "DELETE",
-      });
-
-      if (res.ok) {
-        setBooks((prev) => prev.filter((book) => book.id !== id));
-      } else {
-        alert("삭제 실패 !");
-      }
-    } catch (err) {
-      console.error(err);
-    }
   };
 
   return (
@@ -135,21 +102,7 @@ export default function Mainpage() {
         <h2 className="font-semibold mb-2.5">4. data</h2>
         <div className="p-4">
           <h1 className="text-xl font-bold mb-1.5">📚 책 리스트</h1>
-          <ul>
-            {books.map((book: any) => (
-              <li key={book.id}>
-                {book.title} - {book.author} ({book.year})
-                <Like />
-                <button
-                  onClick={() => handleDelete(book.id)}
-                  className="border border-black px-1 rounded-md text-xs"
-                >
-                  삭제
-                </button>
-              </li>
-            ))}
-          </ul>
-          <Dbtest onCreated={fetchBooks} />
+          <Booklist />
         </div>
       </section>
     </div>
