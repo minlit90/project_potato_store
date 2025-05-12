@@ -23,21 +23,21 @@ export default function Booklist() {
   }, []);
 
   //삭제
-  const handleDelete = async (id: number) => {
-    try {
-      const res = await fetch(`/api/books/${id}`, {
-        method: "DELETE",
-      });
+  // const handleDelete = async (id: number) => {
+  //   try {
+  //     const res = await fetch(`/api/books/${id}`, {
+  //       method: "DELETE",
+  //     });
 
-      if (res.ok) {
-        setBooks((prev) => prev.filter((book) => book.id !== id));
-      } else {
-        alert("삭제 실패 !");
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //     if (res.ok) {
+  //       setBooks((prev) => prev.filter((book) => book.id !== id));
+  //     } else {
+  //       alert("삭제 실패 !");
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <>
@@ -46,12 +46,12 @@ export default function Booklist() {
           <li key={book.id}>
             {book.title} - {book.author} ({book.year})
             <Like />
-            <button
+            {/* <button
               onClick={() => handleDelete(book.id)}
               className="border border-black px-1 rounded-md text-xs"
             >
               삭제
-            </button>
+            </button> */}
           </li>
         ))}
       </ul>
