@@ -4,7 +4,7 @@ import Bookadd from "./Bookadd";
 
 type Book = {
   id: number;
-  title: string;
+  title: String;
   author: String;
   year: number;
 };

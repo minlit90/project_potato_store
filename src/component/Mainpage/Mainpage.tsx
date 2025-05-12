@@ -1,10 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Test from "./Test";
-import Dbtest from "./Dbtest";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Like from "../Like/Like";
 import Booklist from "../Booklist/Booklist";
 
 const tab = [
