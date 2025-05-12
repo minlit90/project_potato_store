@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function Header() {
               href="/"
               className="font-bold cursor-pointer block text-gray-600 h-16 w-[200px] leading-[4rem] text-[14px] text-center uppercase"
             >
-              GRNA
+              검날요고
             </Link>
             <div className="flex gap-6 w-[20%] justify-end text-[12px]">
               <p className="leading-none cursor-pointer">Search</p>
@@ -34,53 +35,31 @@ export default function Header() {
         </div>
       </div>
       {isOpen && (
-        <nav className="absolute top-0 left-0 p-[10px] h-[100vh] w-1/3 ">
-          <div className="relative h-full backdrop-blur-2xl rounded-lg overflow-hidden">
-            <div
-              className="absolute top-[10px] right-[10px] z-10 cursor-pointer"
-              onClick={handleCloseMenu}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#FFFFFF"
+        <nav className="fixed bg-black/70 top-0 left-0 w-screen h-screen">
+          <div className="relative w-full h-full flex items-center justify-center">
+            <div className="w-[200px] aspect-[406/416] relative">
+              <Image
+                src="/assets/cat.jpg"
+                alt="검날요고"
+                fill
+                style={{ objectFit: "contain" }}
+                priority
+                quality={90}
+              />
+              <div
+                className="absolute -top-[30px] -right-[30px] z-10 cursor-pointer"
+                onClick={handleCloseMenu}
               >
-                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-              </svg>
-            </div>
-            <div className="flex justify-center flex-col bg-[rgba(250,243,230,0.3)] h-full p-[20px]">
-              <ul className="flex text-4xl text-white justify-center gap-5 flex-col">
-                <li>
-                  <Link href="/" className="cursor-pointer">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/brand" className="cursor-pointer">
-                    Brand
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/hair" className="cursor-pointer">
-                    Hair&Body
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/Fragnance" className="cursor-pointer">
-                    Fragnance
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/" className="cursor-pointer">
-                    Notice
-                  </Link>
-                </li>
-              </ul>
-              <p className="absolute bottom-[20px] text-xs text-white/50 ">
-                © 2025 Maison de Pure. All rights reserved.
-              </p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#FFFFFF"
+                >
+                  <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+              </div>
             </div>
           </div>
         </nav>
