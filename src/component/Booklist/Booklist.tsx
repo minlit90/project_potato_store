@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import Like from "../Like/Like";
 import Bookadd from "./Bookadd";
-
 type Book = {
   id: number;
-  title: String;
-  author: String;
+  title: string;
+  author: string;
   year: number;
 };
 
