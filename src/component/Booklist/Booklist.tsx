@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Like from "../Like/Like";
 import Bookadd from "./Bookadd";
+
 type Book = {
   id: number;
   title: string;
@@ -12,31 +13,19 @@ export default function Booklist() {
   const [books, setBooks] = useState<Book[]>([]);
 
   const fetchBooks = async () => {
-    const res = await fetch("/api/books");
-    const data = await res.json();
-    setBooks(data);
+    try {
+      const res = await fetch("/api/books");
+      if (!res.ok) throw new Error("Failed to fetch books");
+      const data = await res.json();
+      setBooks(data);
+    } catch (err) {
+      console.error("Error loading books:", err);
+    }
   };
 
   useEffect(() => {
     fetchBooks();
   }, []);
-
-  //삭제
-  // const handleDelete = async (id: number) => {
-  //   try {
-  //     const res = await fetch(`/api/books/${id}`, {
-  //       method: "DELETE",
-  //     });
-
-  //     if (res.ok) {
-  //       setBooks((prev) => prev.filter((book) => book.id !== id));
-  //     } else {
-  //       alert("삭제 실패 !");
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   return (
     <>
@@ -45,12 +34,6 @@ export default function Booklist() {
           <li key={book.id}>
             {book.title} - {book.author} ({book.year})
             <Like />
-            {/* <button
-              onClick={() => handleDelete(book.id)}
-              className="border border-black px-1 rounded-md text-xs"
-            >
-              삭제
-            </button> */}
           </li>
         ))}
       </ul>
